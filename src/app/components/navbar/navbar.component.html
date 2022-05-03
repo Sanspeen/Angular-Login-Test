@@ -1,0 +1,12 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="https://symbols.getvecta.com/stencil_3/3_firebase.39b6ba3587.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+        Bootstrap
+      </a>
+      <a class="navbar-brand" href="#" *ngIf="userLogged | async as user">
+        <img *ngIf="user.photoURL" src="{{user.photoURL}}" alt="" width="30" height="24" class="d-inline-block align-text-top">
+        {{ user.email }}
+      </a>
+    </div>
+</nav>

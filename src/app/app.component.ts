@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,38 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-firebase-login';
+  userLogged = this.authService.getLoggedUser()
+  constructor(private authService:AuthService){
+
+  }
+  
+  usuario={
+    email:"",
+    password:""
+  }
+
+  ingresar(){
+    const {email, password} = this.usuario;
+    this.authService.register(email, password).then(res => {
+      console.log("Resgistrado correctamente", res);
+    })
+  }
+
+  ingresarConGoogle(){
+    const {email, password} = this.usuario;
+    this.authService.loginWithGoogle(email, password).then(res => {
+      console.log("Resgistrado correctamente", res);
+    })
+  }
+
+  getLoggedUser(){
+    this.authService.getLoggedUser().subscribe(res => {
+      console.log(res?.email);
+    });
+  }
+
+  logOut(){
+    this.authService.logOut();
+  }
+
 }
