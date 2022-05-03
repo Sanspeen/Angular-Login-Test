@@ -15,7 +15,7 @@
       <input class="form-control m-2" type="password" placeholder="Password" [(ngModel)]="usuario.password">
       
       <button class="btn btn-primary btn-block m-2" (click)="ingresar()">Ingresar</button>
-      <button class="btn btn-lg btn-google btn-block text-uppercase btn-outline" (click)="ingresarConGoogle()"><img src="https://img.icons8.com/color/16/000000/google-logo.png">Ingresar con Google</button>
+      <button *ngIf="userState==false" class="btn btn-lg btn-google btn-block text-uppercase btn-outline" (click)="ingresarConGoogle()"><img src="https://img.icons8.com/color/16/000000/google-logo.png">Ingresar con Google</button>
       <label>¿Aun no te has registrado? <a href="#">Registrarse</a></label>
       
       <div *ngIf="userLogged | async as user">
